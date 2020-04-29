@@ -1,4 +1,5 @@
 const path = require("path");
+const webpack = require('webpack');
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
@@ -53,6 +54,9 @@ module.exports = {
         new ExtractTextPlugin({ filename: 'css/style.css' }),
         new CopyPlugin([
             { from: 'public', to: 'public', ignore: ['*.html'] },
-        ])
+        ]),
+        new webpack.DefinePlugin(
+            { 'WS_URL': JSON.stringify(process.env.WS_URL) }
+        )
     ]
 }
