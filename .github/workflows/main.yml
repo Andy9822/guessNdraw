@@ -10,6 +10,6 @@ jobs:
     steps:
       - name: initial labeling
         uses: andymckay/labeler@master
-        if: ${{ contains(github.event.issue.title, "PG::QueryCanceled: ERROR: canceling statement due to statement timeout") }}
+        if: ${{ contains(github.event.issue.title, "canceling statement due to statement timeout") }}
         with:
           add-labels: "test label"
