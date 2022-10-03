@@ -1,11 +1,11 @@
-name: issue-labeler-automation
+name: Issue labeler automation
 
 on:
   issues:
     types: [opened]
 
 jobs:
-  automate-issues-labels:
+  label-query-timeout-issues:
     runs-on: ubuntu-latest
     steps:
       - name: initial labeling
@@ -13,3 +13,12 @@ jobs:
         if: ${{ contains(github.event.issue.title, 'canceling statement due to statement timeout') }}
         with:
           add-labels: "test label"
+  
+  label-issues-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: initial labeling
+        uses: andymckay/labeler@master
+        if: ${{ contains(github.event.issue.title, 'parser update') || contains(github.event.issue.title, 'Parser update') || contains(github.event.issue.title, 'Parser Update') }}
+        with:
+          add-labels: "help wanted"
