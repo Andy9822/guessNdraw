@@ -5,20 +5,17 @@ on:
     types: [opened]
 
 jobs:
-  label-query-timeout-issues:
+  automate-issues-labeling:
     runs-on: ubuntu-latest
     steps:
-      - name: initial labeling
+      - name: Query timeout label
         uses: andymckay/labeler@master
         if: ${{ contains(github.event.issue.title, 'canceling statement due to statement timeout') }}
         with:
           add-labels: "test label"
-  
-  label-issues-labels:
-    runs-on: ubuntu-latest
-    steps:
-      - name: initial labeling
+      - name: Parser Update labeling
         uses: andymckay/labeler@master
-        if: ${{ contains(github.event.issue.title, 'parser update') || contains(github.event.issue.title, 'Parser update') || contains(github.event.issue.title, 'Parser Update') }}
+        if: ${{ contains(github.event.issue.title, 'parser update') }}
         with:
-          add-labels: "help wanted"
+          add-labels: "enhancement, bug, test label"
+          remove-labels: "help-wanted"
