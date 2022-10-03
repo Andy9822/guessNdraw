@@ -18,4 +18,4 @@ jobs:
         if: ${{ contains(github.event.issue.title, 'parser update') }}
         with:
           add-labels: "enhancement, bug, test label"
-          remove-labels: "help-wanted"
+          remove-labels: "help wanted"
