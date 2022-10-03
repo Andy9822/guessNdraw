@@ -3,7 +3,7 @@ name: Issue labeler automation
 on:
   issues:
     types:
-      - reopened
+      - edited
       - opened
 
 jobs:
