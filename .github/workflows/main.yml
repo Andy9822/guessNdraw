@@ -2,7 +2,9 @@ name: Issue labeler automation
 
 on:
   issues:
-    types: [opened]
+    types:
+      - reopened
+      - opened
 
 jobs:
   automate-issues-labeling:
