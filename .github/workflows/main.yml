@@ -1,0 +1,15 @@
+name: issue-labeler-automation
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  automate-issues-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: initial labeling
+        uses: andymckay/labeler@master
+        if: ${{ contains(github.event.issue.title, "PG::QueryCanceled: ERROR: canceling statement due to statement timeout") }}
+        with:
+          add-labels: "test label"
